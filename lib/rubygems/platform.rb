@@ -12,7 +12,7 @@ class Gem::Platform
   attr_accessor :cpu, :os, :version
 
   def self.local
-    arch = RbConfig::CONFIG['arch']
+    arch = RUBY_PLATFORM
     arch = "#{arch}_60" if arch =~ /mswin(?:32|64)$/
     @local ||= new(arch)
   end

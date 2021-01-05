@@ -985,9 +985,10 @@ Also, a list:
   # Set the platform to +arch+ and return the previous value
 
   def util_change_arch(arch)
-    orig_arch = RbConfig::CONFIG['arch']
+    orig_arch = RUBY_PLATFORM
 
-    RbConfig::CONFIG['arch'] = arch
+    Object.send :remove_const, :RUBY_PLATFORM
+    Object.const_set :RUBY_PLATFORM, arch
 
     Gem.platforms = []
     Gem::Platform.instance_variable_set :@local, nil
