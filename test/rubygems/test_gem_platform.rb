@@ -23,7 +23,7 @@ class TestGemPlatform < Gem::TestCase
 
     local_platform = Gem::Platform.local
 
-    assert_equal "universal.x86_64", local_platform.cpu
+    assert_equal "x86_64", local_platform.cpu
     assert_equal "darwin", local_platform.os
     assert_equal "19", local_platform.version
   ensure
@@ -385,6 +385,10 @@ class TestGemPlatform < Gem::TestCase
 
     util_set_arch 'sparc-solaris2.8' do
       assert_local_match 'sparc-solaris2.8-mq5.3'
+    end
+
+    util_set_arch 'universal.x86_64-darwin19' do
+      assert_local_match 'x86_64-darwin'
     end
   end
 

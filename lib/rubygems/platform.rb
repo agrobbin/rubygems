@@ -75,6 +75,7 @@ class Gem::Platform
 
       @cpu = case cpu
              when /i\d86/ then 'x86'
+             when /universal\.x86_64/ then 'x86_64'
              else cpu
              end
 
